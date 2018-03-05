@@ -1,0 +1,118 @@
+package geschiffgens;
+
+import java.security.CryptoPrimitive;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ * @author Sebastian Wagner
+ * @author Malte Rudius
+ * @author Winston Oberländer
+ * @version v0.3-Delta
+ * @see GEZ_Millionen
+ * @see Eingabeaufforderung
+ */
+public class Kontodatenleseaufforderung {
+	public static interface RunnableCommand {
+		public String getName();
+
+		public void execute();
+	}
+
+	public static Map<String, RunnableCommand> commands = new HashMap<String, RunnableCommand>();
+
+	/**
+	 * Öffnet eine Eingabeaufforderung; unterstützt bisher nur den 'exit' Befehl.
+	 * 
+	 * @param strings
+	 */
+	public static void main(String[] strings) {
+
+		// Start
+		System.out.print("Geben Sie etwas ein> ");
+		// neue Scanner Klasse deklarieren und instanzieren
+		final Scanner scanner = new Scanner(System.in);
+		registerCommand(new RunnableCommand() {
+
+			@Override
+			public String getName() {
+				return "exit";
+			}
+
+			@Override
+			public void execute() {
+				System.out.println("Exit> ");
+				scanner.close();
+				System.exit(0);
+			}
+		});
+		registerCommand(new RunnableCommand() {
+
+			@Override
+			public String getName() {
+				return "random";
+			}
+
+			@Override
+			public void execute() {
+				System.out.println("Random> " + (int) (Math.random() * 500));
+			}
+		});
+		registerCommand(new RunnableCommand() {
+			
+			@Override
+			public String getName() {
+				return "Du Opfer";
+			}
+			
+			@Override
+			public void execute() {
+				System.out.println("Systemoutput> " + "Deine Mutter.");
+			}
+		});
+		registerCommand(new RunnableCommand() {
+			
+			@Override
+			public String getName() {
+				return "Gamehelper";
+			}
+			
+			@Override
+			public void execute() {
+				System.out.println("Systemoutput> " + "https://www.woberlaender.de/gitlab/wfoasm-woma-net/gamehelper-mc-189");
+			}
+		});
+		
+		// Hauptschleife; Solange Zeilen verfügbar sind
+		while (scanner.hasNext()) {
+			// Zeile in Variable lesen
+			String line = scanner.nextLine();
+			// Kommandos interpretieren
+			interpretCommand(line);
+
+			// Neue Aufforderung ausgeben
+			System.out.print("Geben Sie etwas ein> ");
+		}
+		// Informationen über "beenden" ausgeben
+
+		// Rerssourcen freigeben
+		scanner.close();
+	}
+
+	/**
+	 * @param line
+	 *            Eingelesene Zeile
+	 */
+	public static void interpretCommand(String line) {
+		RunnableCommand rc = commands.get(line.toLowerCase());
+		if (rc != null)
+			rc.execute();
+		else
+			System.out.println("Unbekannter Befehl");
+	}
+
+	public static void registerCommand(RunnableCommand rc) {
+		commands.put(rc.getName().toLowerCase(), rc);
+	}
+}
