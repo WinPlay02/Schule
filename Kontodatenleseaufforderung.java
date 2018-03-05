@@ -1,6 +1,5 @@
 package geschiffgens;
 
-import java.security.CryptoPrimitive;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -261,7 +260,7 @@ public class Kontodatenleseaufforderung {
 	public static void interpretCommand(String line) {
 		// Interface aus registrierten Commands lesen
 		RunnableCommand rc = commands.get(line.toLowerCase().split(" ")[0]);
-		// Testen of Command vorhanden
+		// Testen ob Command vorhanden
 		if (rc != null)
 			// Wenn Vorhanden ausführen
 			rc.execute(line.split(" "));
