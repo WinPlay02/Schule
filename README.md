@@ -11,3 +11,6 @@ Ein kleiner Kommandozeileninterpreter
 - (fast) vollständige Implementation des Caesar-Algorithmus
 - einige weitere Befehle
 - Vollständige Kommentierung
+
+## ArraySort
+Ein funktionierender Algorithmus zum Sortieren von einem int-Array nach Größe.
