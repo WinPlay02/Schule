@@ -14,3 +14,12 @@ Ein kleiner Kommandozeileninterpreter
 
 ## ArraySort
 Ein funktionierender Algorithmus zum Sortieren von einem int-Array nach Größe.
+
+## BubbleSort
+Implementation des BubbleSort Algorithmus
+
+## LineareSuche
+Implementation des linearen Suchalgorithmus
+
+## BinSearch
+Implementation eines binären Suchalgorithmus
