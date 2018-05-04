@@ -2,28 +2,32 @@ package datenfelder;
 
 public class BinSearch {
 
+	/**
+	 * binäre Suche
+	 * 
+	 * @param array Feld, in dem gesucht wird
+	 * @param search Gesuchter Wert
+	 * @return Index des gesuchten Wertes
+	 */
 	public static int binSearch(int[] array, int search) {
+		// Ungültige Werte werden ausgeschloßen.
 		if (search > array[array.length - 1] || search < array[0])
 			return -1;
+		// Minimum, Maximum und die Mitte werden initialisiert.
 		int min = 0;
 		int mid = array.length / 2;
 		int max = array.length;
-		int temp = array[mid];
-		while (temp > search) {
+		// Der Mittlere Wert verschiebt den Bereich bis er auf den gesuchten Wert gekommen ist. 
+		while (array[mid] > search) {
 			max = mid;
 			min = 0;
 			mid = (max + min) / 2;
-			temp = array[mid];
-			// System.out.println("> Max: " + max + " Mid: " + mid + " Min: " + min + "
-			// Temp: " + temp);
 		}
-		while (temp < search) {
+		// Der Mittlere Wert verschiebt den Bereich bis er auf den gesuchten Wert gekommen ist. 
+		while (array[mid] < search) {
 			min = mid;
 			max = array.length;
 			mid = (max + min) / 2;
-			temp = array[mid];
-			// System.out.println("< Max: " + max + " Mid: " + mid + " Min: " + min + "
-			// Temp: " + temp);
 		}
 		return mid;
 	}
