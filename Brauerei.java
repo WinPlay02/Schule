@@ -20,7 +20,7 @@ public class Brauerei {
 
 	public static volatile JLabel nachricht = null;
 	public static volatile int drunk = 0;
-	public static Object MONITOR = new Object();
+	// public static Object MONITOR = new Object();
 	volatile static Thread rh;
 
 	public static void main(String... args) throws ClassNotFoundException, InstantiationException,
@@ -63,7 +63,7 @@ public class Brauerei {
 						drunk++;
 						aufex.setEnabled(false);
 						jps.setValue(0);
-						MONITOR.notify();
+						// MONITOR.notify();
 						jp.updateUI();
 						jp.repaint();
 						jframe.repaint();
@@ -101,7 +101,8 @@ public class Brauerei {
 				Runnable r = () -> {
 					while (true) {
 						try {
-							MONITOR.wait(5000);
+							// MONITOR.wait(5000);
+							Thread.sleep(5000);
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
 							System.out.println("Vorzeitiges Koma!");
