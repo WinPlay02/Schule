@@ -29,3 +29,6 @@ Eine naturgetreue Brauereisimulation
 
 ## ZweiDArrays
 Test von 2D-Arrays
+
+## Mausetod
+Maushauen, ein Spiel, was in einem Kommandozeileninterpreter gespielt wird.
