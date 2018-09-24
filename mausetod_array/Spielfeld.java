@@ -1,5 +1,6 @@
 package mausetod;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Spielfeld {
 		groesse = pGroesse;
 		random = new Random();
 		spielFeld = new char[pGroesse][pGroesse];
-		maus = new Maus(this, -1, -1);// nicht erreichbare koordinaten; aus�erhalb
+		maus = new Maus(this, -1, -1);// nicht erreichbare koordinaten; ausßerhalb
 		leeresSpielfeld(); // des zu betrachtenden bereichs
 	}
 
@@ -55,11 +56,25 @@ public class Spielfeld {
 	public void mausHauen() {
 		int xHammer, yHammer;
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Wohin hauen? X:");
-		xHammer = scanner.nextInt();
+		System.out.print("Wohin hauen? X: ");
+		try {
+			xHammer = scanner.nextInt();
+		} catch (InputMismatchException inputMismatch) {
+			System.out.println("Mach keinen Schwachsinn!");
+			mausHauen();
+			scanner.close();
+			return;
+		}
 		System.out.println();
-		System.out.print("Wohin hauen? Y:");
-		yHammer = scanner.nextInt();
+		System.out.print("Wohin hauen? Y: ");
+		try {
+			yHammer = scanner.nextInt();
+		} catch (InputMismatchException inputMismatch) {
+			System.out.println("Bitte anständig antworten!");
+			mausHauen();
+			scanner.close();
+			return;
+		}
 		scanner.close();
 		_internal_mausHauen(xHammer, yHammer);
 	}
