@@ -32,3 +32,10 @@ Test von 2D-Arrays
 
 ## Mausetod
 Maushauen, ein Spiel, was in einem Kommandozeileninterpreter gespielt wird.
+
+## Buero
+Buero Klassen mit Personen und Queue
+
+### Queue Klassen
+
+https://www.schulentwicklung.nrw.de/lehrplaene/upload/klp_SII/if/MaterialZABI/2018-01-18_Implementationen_von_Klassen_fuer_das_Zentralabitur_ab_2018.zip
