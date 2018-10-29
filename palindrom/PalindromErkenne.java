@@ -3,6 +3,9 @@ package palindrom;
 import java.util.Scanner;
 import datentype.Stack;
 
+/**
+ * @author Sara, Malte, Winston
+ */
 public class PalindromErkenne {
 
 	public static String input() {
@@ -13,12 +16,11 @@ public class PalindromErkenne {
 		return s.toLowerCase();
 	}
 
-	public static void main(String... agrs) {
+	public static boolean palindromPruefen(String pEingabe) {
 		Stack<Character> stack = new Stack<Character>();
 		boolean ungleich = false;
-		String eingabe = input();
 
-		char[] a = eingabe.toCharArray();
+		char[] a = pEingabe.toCharArray();
 		boolean[] palindrome = new boolean[a.length];
 
 		for (int zaehler = 0; zaehler < a.length; zaehler++) {
@@ -32,10 +34,16 @@ public class PalindromErkenne {
 			}
 			stack.pop();
 		}
+		return ungleich;
+	}
+
+	public static void main(String... agrs) {
+		boolean ungleich = palindromPruefen(input());
+
 		if (ungleich) {
-			System.out.println("kein Palindrom!");
+			System.out.println("Kein Palindrom!");
 		} else {
-			System.out.println("ein Palindrom! Wow!");
+			System.out.println("Ein Palindrom! Wow!");
 		}
 	}
 }
