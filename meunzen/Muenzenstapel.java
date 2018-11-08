@@ -9,8 +9,10 @@ import datentype.Stack;
  */
 public class Muenzenstapel {
 
+	// Random
 	static Random RANDOM = new Random();
 
+	// Zufallszahl errechnen mit Switch
 	public static int getNextRandom() {
 		int ran = RANDOM.nextInt(5);
 		switch (ran) {
@@ -30,6 +32,7 @@ public class Muenzenstapel {
 		return 0;
 	}
 
+	// Einstiegspunkt
 	public static void main(String... args) {
 		Muenzenstapel ms = new Muenzenstapel();
 
@@ -44,9 +47,9 @@ public class Muenzenstapel {
 	private int[][] geldzaehler;
 
 	// ein Stack: gemischter Stapel:
-
+	Stack<Muenze> muenzen;
 	// 5 Stacks: für jede Münzsorte einer:
-	Stack<Muenze> cent10, cent20, cent50, euro1, euro2, muenzen;
+	Stack<Muenze> cent10, cent20, cent50, euro1, euro2;
 
 	// Konstruktor: 5 verschiedene Münz-Stapel:
 	Muenzenstapel() {
@@ -57,21 +60,20 @@ public class Muenzenstapel {
 		euro2 = new Stack<Muenze>();
 		muenzen = new Stack<Muenze>();
 		zaehler = 0;
-		// geldzaehler = new int[2][5];
-		geldzaehler = new int[2][6];
+		geldzaehler = new int[2][6]; // 1. [0] Koordinate Wert pro Stack
+		// 1. [1] Koordinate: Anzahl der Münzen pro Stack
+		// 2. Koordinate: Der Münzstapel, der 5. ist eine Gesamtzählung
 	}
 
-	// Aufgabe Teil a):
+	// Aufgabe Teil a): Stapeln der Münzen
 	public void muenzenStapeln() {
 		while (zaehler < 20) {
 			muenzen.push(new Muenze(getNextRandom()));
 			zaehler++;
 		}
-		// else
-		// System.out.println("Stapel voll!");
 	}
 
-	// Aufgabe Teil b):
+	// Aufgabe Teil b): Sortieren der Münzen
 	public void sortieren() {
 		Muenze m;
 		while ((m = muenzen.top()) != null) {
@@ -111,6 +113,7 @@ public class Muenzenstapel {
 		}
 	}
 
+	// Ausgabe der Werte
 	public void ausgabe() {
 		System.out.println("Anzahl 10 Cent Münzen: " + geldzaehler[0][0] + ", Wert: " + geldzaehler[1][0] + " Cent");
 		System.out.println("Anzahl 20 Cent Münzen: " + geldzaehler[0][1] + ", Wert: " + geldzaehler[1][1] + " Cent");
