@@ -3,11 +3,53 @@ public class Morse {
 	// Entry Point
 	public static void main(String... cmd_args) {
 		Morse morse = new Morse();
+		System.out.print("In-Order: ");
+		traverseInOrder(morse.morseBaum);
+		System.out.println();
+		System.out.print("Pre-Order: ");
+		traversePreOrder(morse.morseBaum);
+		System.out.println();
+		System.out.print("Post-Order: ");
+		traversePostOrder(morse.morseBaum);
+		System.out.println();
 		// Test mit Beispiel
-		String muster = "..-. . .... .-.. . .-. ..-. .-. . ..";
-		String resultat = morse.morseDecodieren(muster);
-		System.out.println("Muster:\t\t" + muster + System.lineSeparator() + "Resultat:\t" + resultat);
+//		String muster = "..-. . .... .-.. . .-. ..-. .-. . ..";
+//		String resultat = morse.morseDecodieren(muster);
+//		System.out.println("Muster:\t\t" + muster + System.lineSeparator() + "Resultat:\t" + resultat);
 		//
+	}
+
+	public static void traverseInOrder(BinaryTree<Character> tree_node) {
+		if (tree_node == null) {
+			return;
+		}
+		traverseInOrder(tree_node.getLeftTree());
+		if (tree_node.getContent() != null) {
+			System.out.print(String.format("%s", tree_node.getContent()));
+		}
+		traverseInOrder(tree_node.getRightTree());
+	}
+
+	public static void traversePreOrder(BinaryTree<Character> tree_node) {
+		if (tree_node == null) {
+			return;
+		}
+		if (tree_node.getContent() != null) {
+			System.out.print(String.format("%s", tree_node.getContent()));
+		}
+		traversePreOrder(tree_node.getLeftTree());
+		traversePreOrder(tree_node.getRightTree());
+	}
+
+	public static void traversePostOrder(BinaryTree<Character> tree_node) {
+		if (tree_node == null) {
+			return;
+		}
+		traversePostOrder(tree_node.getLeftTree());
+		traversePostOrder(tree_node.getRightTree());
+		if (tree_node.getContent() != null) {
+			System.out.print(String.format("%s", tree_node.getContent()));
+		}
 	}
 
 	// Enthält alle wichtigen Zeichen
