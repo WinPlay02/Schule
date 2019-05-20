@@ -10,8 +10,8 @@ package LeFloyd_Project;
 
 public class Floyd {
 
-	int[][] adjazenz = { {} };
-	int[][] distanz = { {} };
+	int[][] adjazenzmatrix = { {} };
+	int[][] distanzmatrix = { {} };
 
 	public static void main(String... args) {
 
