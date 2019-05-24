@@ -7,7 +7,7 @@ package LeFloyd_Project;
  * @author 		winston.oberlaender
  * @version 	pre-alpha 0.1kbvv
  * @since		20.05.2019 11:11 Uhr
- * @category	Dat is Käse
+ * @category	Dat is KÃ¤se
  * @see			GraphenPortrait
  * @see			Floyd
  * 				Auch eine super tolle Klasse :D
