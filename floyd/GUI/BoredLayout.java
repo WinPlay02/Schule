@@ -1,4 +1,4 @@
-package LeFloyd_Project;
+package GUI;
 
 import java.awt.BorderLayout;
 
